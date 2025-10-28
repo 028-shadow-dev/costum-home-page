@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('image/bianca.jpg');
+    background-image: url('image/bianca.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -16,8 +16,6 @@ body {
 .kiri h1 {
     margin: 20px;   
 }
-
-
 
 .kanan input {
     padding: 2rem;
@@ -41,14 +39,11 @@ body {
     border: none;
 }
 
-
-
 input:focus {
   outline: none;      /* Hilangkan garis biru default */
   border: none;       /* Hilangkan border */
   box-shadow: none;   /* Hilangkan efek bayangan (jika ada) */
 }
-
 
 input::placeholder {
   color: white; /* Ganti dengan warna yang kamu mau */
