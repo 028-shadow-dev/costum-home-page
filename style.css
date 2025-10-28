@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/image/bianca.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.kiri h1 {
+    margin: 20px;   
+}
+
+
+
+.kanan input {
+    padding: 2rem;
+    margin: 20px;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+}
+
+.kanan button {
+    padding: 2rem;
+    margin: 20px;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+}
+
+
+
+input:focus {
+  outline: none;      /* Hilangkan garis biru default */
+  border: none;       /* Hilangkan border */
+  box-shadow: none;   /* Hilangkan efek bayangan (jika ada) */
+}
+
+
+input::placeholder {
+  color: white; /* Ganti dengan warna yang kamu mau */
+  font-style: italic;
+  opacity: 1; /* Default: 0.5, bisa kamu ubah */
+}
