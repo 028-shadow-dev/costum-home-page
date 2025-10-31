@@ -5,7 +5,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="nav">
+        <!-- Background: use <picture> so browsers can load WebP when available and we can promote the image to its own layer -->
+        <picture>
+            <source srcset="image/bianca.webp" type="image/webp">
+            <img src="image/bianca.jpg" alt="background" class="bg">
+        </picture>
+
+        <div class="nav">
         <div class="kiri">
             <h1>welcome</h1>
             <h1>Shadow</h1>

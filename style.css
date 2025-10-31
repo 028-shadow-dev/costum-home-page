@@ -1,50 +1,70 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('image/bianca.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     height: 100vh;
+    overflow: hidden; /* keep background fixed-size and avoid accidental scroll repaints */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background image moved to an <img> with class .bg so browsers can composite it separately and WebP can be used */
+.bg {
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    backface-visibility: hidden;
+    will-change: transform;
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .kiri h1 {
-    margin: 20px;   
+    margin: 20px;
+    color: white;
+}
+
+/* Make input stable: fixed width, box-sizing to avoid padding changing layout, smaller padding to reduce repaint area */
+.kanan {
+    display: flex;
+    align-items: center;
+}
+
+.kanan input,
+.kanan button {
+    box-sizing: border-box;
+    padding: 0.6rem;
+    margin: 20px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.06);
+    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+    will-change: transform;
+    transform: translateZ(0); /* promote to its own layer to avoid repainting big background */
 }
 
 .kanan input {
-    padding: 2rem;
-    margin: 20px;
-    text-align: center;
-    background-color: transparent;
-    color: white;
-    border-radius: 10px;
-    font-size: 1rem;
-    border: none;
+    width: 320px;
 }
 
 .kanan button {
-    padding: 2rem;
-    margin: 20px;
-    text-align: center;
-    background-color: transparent;
-    color: white;
-    border-radius: 10px;
-    font-size: 1rem;
-    border: none;
+    width: auto;
+    padding: 0.6rem 1rem;
 }
 
 input:focus {
   outline: none;      /* Hilangkan garis biru default */
   border: none;       /* Hilangkan border */
   box-shadow: none;   /* Hilangkan efek bayangan (jika ada) */
+  background-color: black; 
 }
-
 input::placeholder {
   color: white; /* Ganti dengan warna yang kamu mau */
   font-style: italic;
