@@ -2,31 +2,45 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow: hidden; /* keep background fixed-size and avoid accidental scroll repaints */
+    overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    background: #000; /* Fallback color during zoom */
 }
 
-/* Background image moved to an <img> with class .bg so browsers can composite it separately and WebP can be used */
+/* Background optimization for smooth zoom */
 .bg {
     position: fixed;
-    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: -1;
     backface-visibility: hidden;
-    will-change: transform;
+    transform: translateZ(0);
+    will-change: transform, scale;
+    image-rendering: -webkit-optimize-contrast;
+    transform-style: preserve-3d;
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    transform: translateZ(0);
+    will-change: transform;
+    transform-style: preserve-3d;
+    position: relative;
 }
 
 .kiri h1 {
     margin: 20px;
     color: white;
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 /* Make input stable: fixed width, box-sizing to avoid padding changing layout, smaller padding to reduce repaint area */
@@ -41,17 +55,25 @@ body {
     padding: 0.6rem;
     margin: 20px;
     text-align: center;
-    background-color: rgba(255,255,255,0.06);
-    color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(7, 7, 7);
     border-radius: 10px;
     font-size: 1rem;
     border: none;
-    will-change: transform;
-    transform: translateZ(0); /* promote to its own layer to avoid repainting big background */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease-out;
+}
+
+.kanan input::placeholder {
+    color: black;
+    opacity: 1;
 }
 
 .kanan input {
-    width: 320px;
+    width: 200px;
 }
 
 .kanan button {
@@ -63,10 +85,22 @@ input:focus {
   outline: none;      /* Hilangkan garis biru default */
   border: none;       /* Hilangkan border */
   box-shadow: none;   /* Hilangkan efek bayangan (jika ada) */
-  background-color: black; 
+  background-color: rgb(255, 255, 255); 
 }
+
 input::placeholder {
   color: white; /* Ganti dengan warna yang kamu mau */
-  font-style: italic;
+  font-style: italic; 
   opacity: 1; /* Default: 0.5, bisa kamu ubah */
+}
+
+.footbar {
+    display: flex;
+    justify-content: start;
+    align-content: end;
+    height: fit-content;
+}
+
+.bawah {
+    margin: 20px;
 }
